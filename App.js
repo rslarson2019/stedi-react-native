@@ -57,7 +57,7 @@ export default function App() {
           options={{
             tabBarLabel: 'Login',
             tabBarIcon: ({ color }) => (
-              <MaterialCommunityIcons name='login' color={color} size={26} />
+              <MaterialCommunityIcons name='login' color={color} size={25} />
             ),
           }}
         />
