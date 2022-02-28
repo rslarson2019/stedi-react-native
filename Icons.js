@@ -6,22 +6,22 @@ const Icons = () => {
   return (
     <View style={styles.icons}>
       <Card syle={styles.card}>
-        <Image source={require('./image/ImproveBalance.png')}></Image>
+        <Image resizeMode='contain' source={require('./image/ImproveBalance.png')}></Image>
       </Card>
       <Card style={styles.card}>
-        <Image source={require('./image/LearnAboutBalance.png')}></Image>
+        <Image resizeMode='contain' source={require('./image/LearnAboutBalance.png')}></Image>
       </Card>
       <Card style={styles.card}>
-        <Image source={require('./image/Profile.png')}></Image>
+        <Image resizeMode='contain' source={require('./image/Profile.png')}></Image>
       </Card>
       <Card style={styles.card}>
-        <Image source={require('./image/StatsandImprovement.png')}></Image>
+        <Image resizeMode='contain' source={require('./image/StatsandImprovement.png')}></Image>
       </Card>
       <Card style={styles.card}>
-        <Image source={require('./image/STEDITimer.png')}></Image>
+        <Image resizeMode='contain' source={require('./image/STEDITimer.png')}></Image>
       </Card>
       <Card style={styles.card}>
-        <Image source={require('./image/Tutorial.png')}></Image>
+        <Image resizeMode='contain' source={require('./image/Tutorial.png')}></Image>
       </Card>
     </View>
   );
