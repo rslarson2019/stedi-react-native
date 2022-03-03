@@ -1,6 +1,7 @@
 import React from "react";
 import { SafeAreaView, StyleSheet, TextInput } from "react-native";
-
+import {View, Text, Button} from "react-native";
+/*
 const Login = () => {
   const [text, onChangeText] = React.useState("Phone Number");
   const [number, onChangeNumber] = React.useState(null);
@@ -31,5 +32,28 @@ const styles = StyleSheet.create({
     padding: 10,
   },
 });
+*/
+export default function Login(props){
+  return(
+      <View style={styles.login}>
+          <Text>This is the Login Screen</Text>
+          <Button title="Log In" onPress={()=>props.setUserLoggedIn(true)}></Button>
+      </View>
 
-export default Login;
+  );
+}
+
+const styles = StyleSheet.create({
+  login: {
+      flexDirection: 'row',
+      width: '100%',
+      justifyContent: 'space-between',
+      backgroundColor: 'green',
+      height: '12%',
+      alignItems: 'flex-end',
+      paddingBottom: 5,
+      paddingLeft: 10,
+      paddingRight: 10,
+      
+    },
+})
