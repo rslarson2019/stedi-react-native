@@ -9,10 +9,13 @@ import { createMaterialBottomTabNavigator } from "@react-navigation/material-bot
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import Login from "./Login.js";
+
 // import Icons from "./Icons";
 const Tab = createMaterialBottomTabNavigator();
+
 export default function App() {
   const [userLoggedIn, setUserLoggedIn] = useState(false);
+
   if (userLoggedIn) {
     return (
       <NavigationContainer>
@@ -22,15 +25,15 @@ export default function App() {
           barStyle={{ backgroundColor: "green" }}
         >
           <Tab.Screen
-            name="Home"
-            component={Home}
-            options={{
-              tabBarLabel: "Home",
-              tabBarIcon: ({ color }) => (
-                <MaterialCommunityIcons name="home" color={color} size={26} />
-              ),
-            }}
-          />
+          name='Home'
+          children={()=><Home setUserEmail={setUserEmail} />}
+          options={{
+            tabBarLabel: 'Home',
+            tabBarIcon: ({ color }) => (
+              <MaterialCommunityIcons name='home' color={color} size={26} />
+            ),
+          }}
+        />
           <Tab.Screen
             name="Step Counter"
             component={Counter}
@@ -68,4 +71,5 @@ export default function App() {
     return (<Login setUserLoggedIn={setUserLoggedIn} />);
   }
 }
+
 const styles = StyleSheet.create({});

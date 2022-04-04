@@ -1,59 +1,81 @@
-import React from "react";
+import React, { useState } from "react";
 import { SafeAreaView, StyleSheet, TextInput } from "react-native";
-import {View, Text, Button} from "react-native";
-/*
-const Login = () => {
-  const [text, onChangeText] = React.useState("Phone Number");
-  const [number, onChangeNumber] = React.useState(null);
+import { View, Text, Button } from "react-native";
 
+//const [phoneNumber, setPhoneNumber] = useState("");
+//const [oneTimePassword, setOneTimePassword] = useState("");
+
+export default function Login(props) {
+  const [phoneNumber, setPhoneNumber] = useState(phoneNumber);
+  const [oneTimePassword, setOneTimePassword] = useState("");
+  const [password, setPassword] = useState("");
   return (
-    <SafeAreaView>
+    <View>
+      <Text style={styles.login}>Log in to continue</Text>
       <TextInput
         style={styles.input}
-        onChangeText={onChangeText}
-        value={text}
+        onChangeText={setPhoneNumber}
+        value={phoneNumber}
+        placeholder="Phone Number"
+        //keyboardType="numeric"
       />
+      <Button
+        style={styles.input}
+        title="Generate Password"
+        onPress={() => {
+          fetch("https://dev.stedi.me/twofactorlogin/" + phoneNumber, {
+            method: "POST",
+            headers: {
+              Accept: "application/text",
+              "Content-Type": "application/text",
+            },
+          });
+          
+        }}
+      ></Button>
       <TextInput
         style={styles.input}
-        onChangeText={onChangeNumber}
-        value={number}
-        placeholder="One Time Password"
+        onChangeText={setOneTimePassword}
+        value={oneTimePassword}
+        placeholder="One-Time Password"
         keyboardType="numeric"
       />
-    </SafeAreaView>
-  );
-};
-
-const styles = StyleSheet.create({
-  input: {
-    height: 40,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
-  },
-});
-*/
-export default function Login(props){
-  return(
-      <View style={styles.login}>
-          <Text>This is the Login Screen</Text>
-          <Button title="Log In" onPress={()=>props.setUserLoggedIn(true)}></Button>
-      </View>
-
+      <Button
+        style={styles.input}
+        title="Log In"
+        onPress={() => {
+          fetch("https://dev.stedi.me/twofactorlogin/", {
+            method: "POST",
+          body:JSON.stringify(
+            {
+              phoneNumber:phoneNumber,
+              password:oneTimePassword
+            }),
+            
+          });
+          //const token = Response.JSON();
+            setUserLoggedIn(true);
+        }}
+      ></Button>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   login: {
-      flexDirection: 'row',
-      width: '100%',
-      justifyContent: 'space-between',
-      backgroundColor: 'green',
-      height: '12%',
-      alignItems: 'flex-end',
-      paddingBottom: 5,
-      paddingLeft: 10,
-      paddingRight: 10,
-      
-    },
-})
+    flexDirection: "row",
+    width: "100%",
+    justifyContent: "space-between",
+    backgroundColor: "green",
+    height: "18%",
+    alignItems: "flex-end",
+    paddingTop: 50,
+    paddingLeft: 95,
+    paddingRight: 10,
+    fontSize: 30,
+  },
+  input: {
+    height: "15%",
+    fontSize: 23,
+  },
+});
